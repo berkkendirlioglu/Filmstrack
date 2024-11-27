@@ -1,0 +1,54 @@
+.button-wrapper{
+    .play-button{
+        position: relative;
+        &::after{
+            content: "Play";
+            width: 60px;
+            height: 30px;
+            background: #000;
+            color: #fff;
+            position: absolute;
+            top: -40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all .1s linear;
+            z-index: 9999;
+        }
+
+        &:hover{
+            &::after{
+                opacity: 1;
+            }
+        }
+    }
+    .add-favorite{
+        position: relative;
+        &::after{
+            content: "Add List";
+            width: 100px;
+            height: 30px;
+            background: #000;
+            color: #fff;
+            position: absolute;
+            top: -40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all .1s linear;
+            z-index: 9999;
+        }
+
+        &:hover{
+            &::after{
+                opacity: 1;
+            }
+        }
+    }
+}
