@@ -8,7 +8,7 @@ const FetchProcess = ({url,paramsValue}:{url:string, paramsValue?:Record<string,
             params:{...paramsValue,page:1},
             headers:{
                 accept:'application/json',
-                Authorization:`Bearer ${process.env.API_KEY}`
+                Authorization:`Bearer ${process.env.API_TOKEN}`
             }
         }).then(response => {
             return response.data;
