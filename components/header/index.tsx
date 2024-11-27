@@ -25,7 +25,7 @@ function Navbar() {
     <header className="bg-gradient-to-b from-[rgba(0,0,0,.8)] to-[rgba(0,0,0,0)] body-container w-[100%] fluid relative">
       <div className='flex items-center justify-between'>
         <Link className='flex items-center gap-[8px] text-[24px] font-bold text-zinc-50 transition hover:text-zinc-400 relative z-[999]' href="/">
-            <FaPlayCircle/> FILMSTRACK2
+            <FaPlayCircle/> FILMSTRACK
         </Link>
         <div className='hidden md:flex'>
           <SearchInput/>
