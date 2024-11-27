@@ -1,7 +1,7 @@
 export interface ParamsProps {
-  params: {
+  params:Promise<{
     id: string;
-  };
+  }>
 }
 
 export interface SearchParamsProps {
@@ -11,18 +11,18 @@ export interface SearchParamsProps {
 }
 
 export interface ParamsSearchParamsProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>,
   searchParams: {
     [key: string]: string | string[] | undefined;
   };
 }
 
 export interface CategoryParamsProps {
-  params: {
+  params: Promise<{
     category: string[];
-  };
+  }>
 }
 
 export interface GenresParams {
