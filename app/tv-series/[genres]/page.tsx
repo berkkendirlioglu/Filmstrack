@@ -4,11 +4,12 @@ import MoviesSection from "@/components/movies-section";
 import { getCategoryTvSeries, getTvSerieCategories } from "@/services/FetchProcess";
 import {  GenresTypes } from "@/types/CategoriesTypes";
 import { TvSeriesType } from "@/types/FeaturedMovieTypes";
+import { GenresParams } from "@/types/GlobalParamsType";
 
 import { randomInt } from "crypto";
 import React from "react";
 
-async function page({params}:{params:{genres:string}}) {
+async function page({params}:GenresParams) {
     const { genres } = await params
     const [{results:categoryTvSeries}, {genres:tvSeriesCategory}]:[TvSeriesType, GenresTypes] = await Promise.all([getCategoryTvSeries(genres), getTvSerieCategories()])
   return (

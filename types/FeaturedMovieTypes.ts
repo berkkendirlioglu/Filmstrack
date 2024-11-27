@@ -12,7 +12,7 @@ export interface MoviesResultsType {
     original_language:string,
     original_name?: string,
     original_title?:string,
-    overview:string,
+    overview:string | undefined,
     popularity:number,
     poster_path:string,
     first_air_date?: string,
