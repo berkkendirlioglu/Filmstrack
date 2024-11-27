@@ -1,32 +1,32 @@
 export interface ParamsProps {
-    params:{
-      id:string;
-    }
-  }
+  params: {
+    id: string;
+  };
+}
 
 export interface SearchParamsProps {
   searchParams: {
-    [key:string]:string | string[] | undefined;
+    [key: string]: string | string[] | undefined;
   };
 }
 
 export interface ParamsSearchParamsProps {
-  params:{
-    id:string;
-  }
+  params: {
+    id: string;
+  };
   searchParams: {
-    [key:string]:string | string[] | undefined;
+    [key: string]: string | string[] | undefined;
   };
 }
 
 export interface CategoryParamsProps {
-  params:{
-    category:string[];
-  }
+  params: {
+    category: string[];
+  };
 }
 
 export interface GenresParams {
-  params:{
-    genres:string,
-  }
+  params: Promise<{
+    genres: string;
+  }>;
 }
