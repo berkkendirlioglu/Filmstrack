@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import LoginPageBackground from '@/components/login-page-bg';
 import { getAllMovies } from '@/services/FetchProcess'
 import { randomInt } from 'crypto';
