@@ -24,3 +24,9 @@ export interface CategoryParamsProps {
     category:string[];
   }
 }
+
+export interface GenresParams {
+  params:{
+    genres:string,
+  }
+}
