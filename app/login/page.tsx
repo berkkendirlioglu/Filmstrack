@@ -93,7 +93,7 @@ function LoginPage() {
               </Link>
             </div>
 
-            <form action="#" className="flex flex-[100%_0_1] px-[5rem] flex-wrap gap-[.5rem] justify-between">
+            <div className="flex flex-[100%_0_1] px-[5rem] flex-wrap gap-[.5rem] justify-between">
               <label htmlFor="email" className="flex-[100%]">E-Posta</label>
               <input required className="text-black px-4 py-2 rounded-[20px] focus:outline-none flex-[100%]" id="email" type="email" />
               <label htmlFor="password" className="flex-[100%]">Şifre</label>
@@ -101,7 +101,7 @@ function LoginPage() {
               <button onClick={getRequestToken} className="bg-blue-600 hover:bg-blue-500 transition text-white font-bold text-[1rem] text-center flex-[100%] py-2 my-4 rounded-full">Giriş Yap!</button>
               <Link className='w-[100%] text-center border-[1px] border-solid border-[#fff] py-2 rounded-full transition hover:bg-white hover:text-black' href={"/register"}>Üye Ol!</Link>
               <div className="text-end w-[100%] px-3"><Link className="underline" href={"/login"}>Şifremi Unuttum</Link></div>
-            </form>
+            </div>
 
           </div>
 
