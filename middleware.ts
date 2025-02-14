@@ -10,5 +10,5 @@ export function middleware(request:NextRequest){
 }
 
 export const config = {
-    matcher:["/", "/movie", "/watchlist", "/tv-series", "/movie/:path*", "/tv-series/:path*"],
+    matcher:["/", "/movie", "/tv-series", "/watchlist", "/movie/:path*", "/tv-series/:path*"],
 }
