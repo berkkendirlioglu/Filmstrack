@@ -1,14 +1,77 @@
+'use client';
 import LoginPageBackground from '@/components/login-page-bg';
-import { getAllMovies } from '@/services/FetchProcess'
-import { randomInt } from 'crypto';
+import { CreateRequestToken, CreateSessionId, getAllMovies } from '@/services/FetchProcess'
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { IoMdClose } from "react-icons/io";
 
-async function LoginPage() {
-    const {results:Movie} = await getAllMovies();
+
+function LoginPage() {
+  const [Movies, setMovies] = useState([]);
+  const [requestToken, setRequestToken] = useState<RequestTokenPayload>();
+  const [ModalHandle, setModalHandle] = useState<boolean>(false);
+
+    useEffect(() => {
+      const FetchMovies = async () => {
+        try {
+          const { results } = await getAllMovies();
+          setMovies(results);
+        } catch (error) {
+          console.error("error fetching movies", error)
+        }
+      }
+      FetchMovies();
+    }, []);
+
+    const getRequestToken = async () => {
+        const response:RequestTokenPayload = await CreateRequestToken();
+        setRequestToken(response);
+    }
+
+    useEffect(() => {
+      if(requestToken?.request_token){
+        setModalHandle(true);
+        window.open(`https://www.themoviedb.org/authenticate/${requestToken?.request_token}`, "_blank");
+      }
+    }, [requestToken]);
+
+    const createSessionId = async () => {
+      const response = await CreateSessionId(requestToken.request_token)
+      if(response.success){
+        localStorage.setItem("session_id",response.session_id);
+        setModalHandle(false);
+        setTimeout(() => {
+          window.location.href="/"
+        }, 2000);
+      }else{
+        alert("local e session id kaydedilemedi");
+        setModalHandle(false);
+      }
+      
+    }
   return (
     <div>
-      <LoginPageBackground movies={Movie[randomInt(0,19)]}/>
+      {Movies.length > 0 && (
+         <LoginPageBackground movies={Movies[Math.floor(Math.random() * 19) + 1]}/>
+      )}
+
+      {ModalHandle && (
+        <div className='w-[100%] h-[100%] fixed flex justify-center items-center top-[0] left-[0] bg-[rgba(0,0,0,.5)] z-[999]'>
+          <div className='w-[30%] h-[370px] flex flex-col bg-[#fff] rounded-[25px] relative'>
+            <div className='py-2 flex justify-center items-center relative border-b-[1px] border-solid border-[rgba(0,0,0,.5)]'>
+              <h5 className='text-[#000] font-bold text-[1.3rem]'>3.Taraf Kimlik Doğrulama Talebi</h5>
+              <button className='text-[#000] text-[1.7rem] absolute right-[2%]' onClick={() => setModalHandle(false)}><IoMdClose/></button>
+            </div>
+            <div className='py-10 h-[100%] flex flex-col justify-around items-center'>
+              <p className='text-[#000] text-center px-20'>"APP" sizin adınıza veri okumak ve yazmak için izninizi istiyor. Listelerinizi korumak veya filmleri TMDB dışında derecelendirmek gibi şeyler yapmak istiyorsanız bu gereklidir. <br /> Lütfen TMDB API üzerinden token yetkilendirildiğinde "Evet" butonuna tıklayınız.</p>
+              <div className='flex w-[100%] justify-center items-center gap-[1rem]'>
+                <button onClick={createSessionId} className='text-[#fff] bg-[#000] py-2 px-4 rounded-[25px]'>Kabul Et</button>
+                <button onClick={() => setModalHandle(false)} className='text-[#000] border border-solid border-[#000] rounded-[25px] py-2 px-4'>Reddet</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="fixed flex justify-center items-center top-[50%] left-[50%] translate-x-[-50%] w-[100%] translate-y-[-50%]">
 
@@ -36,7 +99,7 @@ async function LoginPage() {
               <input required className="text-black px-4 py-2 rounded-[20px] focus:outline-none flex-[100%]" id="email" type="email" />
               <label htmlFor="password" className="flex-[100%]">Şifre</label>
               <input required className="text-black px-4 py-2 rounded-[20px] focus:outline-none flex-[100%]" id="password" type="password" />
-              <button className="bg-blue-600 hover:bg-blue-500 transition text-white font-bold text-[1rem] text-center flex-[100%] py-2 my-4 rounded-full">Giriş Yap!</button>
+              <button onClick={getRequestToken} className="bg-blue-600 hover:bg-blue-500 transition text-white font-bold text-[1rem] text-center flex-[100%] py-2 my-4 rounded-full">Giriş Yap!</button>
               <Link className='w-[100%] text-center border-[1px] border-solid border-[#fff] py-2 rounded-full transition hover:bg-white hover:text-black' href={"/register"}>Üye Ol!</Link>
               <div className="text-end w-[100%] px-3"><Link className="underline" href={"/login"}>Şifremi Unuttum</Link></div>
             </form>

@@ -1,9 +1,10 @@
+'use client'
 import React from 'react'
 import {MoviesResultsType} from '@/types/FeaturedMovieTypes'
 import Image from 'next/image';
 
 function LoginPageBackground({movies}:{movies:MoviesResultsType}) {
-    const {poster_path} = movies;
+  const {poster_path} = movies;
   return (
     <div className='flex flex-col gap-[24px] mt-[56px] mb-[56px]'>
       <div className='movie-poster'>

@@ -1,6 +1,8 @@
 export interface MovieTypes {
     page:number,
     results:MoviesResultsType[],
+    total_pages?:number,
+    total_results?:number
 }
 
 export interface MoviesResultsType {
