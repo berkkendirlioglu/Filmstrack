@@ -41,7 +41,7 @@ function LoginPage() {
         setModalHandle(false);
         setTimeout(() => {
           window.location.href="/"
-        }, 2000);
+        }, 1000);
       }else{
         alert("local e session id kaydedilemedi");
         setModalHandle(false);
