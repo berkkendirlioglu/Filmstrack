@@ -112,7 +112,7 @@ function SearchInput() {
       {searchValue?.length! > 0 && (
         <button
           onClick={() => setsearchValue("")}
-          className="py-2 px-2 absolute z-[999] right-[41.2%] top-[30%]"
+          className="py-2 px-2 absolute z-[999] right-[46.2%] top-[30%]"
         >
           <FaTimes className="text-white text-[1.3rem]" />
         </button>
