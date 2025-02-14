@@ -43,13 +43,7 @@ const Logout = async (data: string) => {
   });
   const responseJson = (await response.json()) as { success: boolean };
 
-  const deleteCookie = await fetch("/api/logout", { method: "POST" });
-
-  if (deleteCookie.ok) {
-    alert("Çıkış başarılı! Token kaldırıldı.");
-  } else {
-    alert("Çıkış başarısız!");
-  }
+  await fetch("/api/logout", { method: "POST" });
 
   return responseJson;
 };
@@ -71,12 +65,6 @@ const CreateSessionId = async (req: string) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ accessToken: responseJson.session_id }),
 });
-
-if (login.ok) {
-    alert("Giriş başarılı! Token cookie'ye kaydedildi.");
-} else {
-    alert("Giriş başarısız!");
-}
 
   return responseJson;
 };

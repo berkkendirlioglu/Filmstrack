@@ -4,12 +4,13 @@ import { AddRemoveWatchlist, GetWatchlist } from "@/services/FetchProcess";
 import { MoviesResultsType, MovieTypes } from "@/types/FeaturedMovieTypes";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 
 const WatchlistPage = () => {
   const [watchlistMovies, setWatchlistMovies] = useState<MovieTypes>();
+  const session_id = Cookies.get("accessToken");
 
   const getMyWatchlist = async () => {
-    const session_id = localStorage.getItem("session_id");
     if (!session_id) return;
 
     const response = await GetWatchlist(session_id);
@@ -25,7 +26,6 @@ const WatchlistPage = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
-    const session_id = localStorage.getItem("session_id");
     if (!session_id) return;
 
     const data = {

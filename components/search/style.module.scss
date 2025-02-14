@@ -1,54 +1,33 @@
 .button-wrapper{
-    .play-button{
-        position: relative;
-        &::after{
-            content: "Play";
-            width: 60px;
-            height: 30px;
-            background: #000;
-            color: #fff;
-            position: absolute;
-            top: -40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all .1s linear;
-            z-index: 9999;
-        }
-
-        &:hover{
-            &::after{
-                opacity: 1;
-            }
-        }
+    .play-button-text{
+        position: absolute;
+        top: -90%;
+        left: -5%;
+        padding: .3rem 1rem;
+        background: #000;
+        color: #fff;
+        border-radius:25px;
+        opacity: 0;
+        transition: all .1s linear;
+    }
+    .play-button:hover + .play-button-text{
+        opacity: 1;
+    }
+    .addlist-button-text{
+        position: absolute;
+        top: -90%;
+        right: 47%;
+        padding: .3rem 1rem;
+        background: #000;
+        color: #fff;
+        border-radius:25px;
+        opacity: 0;
+        transition: all .1s linear;
     }
     .add-favorite{
-        position: relative;
-        &::after{
-            content: "Add List";
-            width: 100px;
-            height: 30px;
-            background: #000;
-            color: #fff;
-            position: absolute;
-            top: -40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all .1s linear;
-            z-index: 9999;
-        }
-
-        &:hover{
-            &::after{
-                opacity: 1;
-            }
-        }
+        z-index: 9999;
+    }
+    .add-favorite:hover + .addlist-button-text{
+        opacity: 1;
     }
 }

@@ -8,6 +8,7 @@ import { GoPlusCircle } from "react-icons/go";
 import { BsCheckCircle } from "react-icons/bs";
 import styles from "./style.module.scss";
 import { AddRemoveWatchlist, GetWatchlist } from "@/services/FetchProcess";
+import { session_id } from "../header";
 
 export default function MoviesSection({
   title,
@@ -27,7 +28,7 @@ export default function MoviesSection({
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    const session_id = localStorage.getItem("session_id");
+  
     const data = {
       media_type: "movie",
       media_id: movie.id,
@@ -41,7 +42,7 @@ export default function MoviesSection({
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    const session_id = localStorage.getItem("session_id");
+  
     const data = {
       media_type: "movie",
       media_id: movie.id,
@@ -50,9 +51,8 @@ export default function MoviesSection({
     await AddRemoveWatchlist(data, session_id);
     getMyWatchlist();
   };
-
   const getMyWatchlist = async () => {
-    const session_id = localStorage.getItem("session_id");
+  
     if (!session_id) return;
 
     const response = await GetWatchlist(session_id);

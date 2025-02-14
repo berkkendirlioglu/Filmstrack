@@ -38,7 +38,6 @@ function LoginPage() {
     const createSessionId = async () => {
       const response = await CreateSessionId(requestToken.request_token)
       if(response.success){
-        localStorage.setItem("session_id",response.session_id);
         setModalHandle(false);
         setTimeout(() => {
           window.location.href="/"

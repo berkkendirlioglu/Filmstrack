@@ -6,6 +6,8 @@ import { FaPlus } from "react-icons/fa";
 import Image from "next/image";
 import { AddRemoveWatchlist, GetWatchlist } from "@/services/FetchProcess";
 import { FaCheck } from "react-icons/fa6";
+import { session_id } from "../header";
+
 
 function FeaturedMovie({
   movies,
@@ -21,7 +23,7 @@ function FeaturedMovie({
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    const session_id = localStorage.getItem("session_id");
+    
     const data = {
       media_type: "movie",
       media_id: movie.id,
@@ -35,7 +37,7 @@ function FeaturedMovie({
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    const session_id = localStorage.getItem("session_id");
+    
     const data = {
       media_type: "movie",
       media_id: movie.id,
@@ -46,7 +48,7 @@ function FeaturedMovie({
   };
 
   const getMyWatchlist = async () => {
-    const session_id = localStorage.getItem("session_id");
+    
     if (!session_id) return;
 
     const response = await GetWatchlist(session_id);

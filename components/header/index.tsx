@@ -6,8 +6,9 @@ import { IoIosMenu } from "react-icons/io";
 import SearchInput from "../search";
 import { TbLogout } from "react-icons/tb";
 import { Logout } from "@/services/FetchProcess";
+import Cookies from "js-cookie";
 
-const session_id = localStorage.getItem("session_id");
+export const session_id = Cookies.get("accessToken");
 
 function Navbar() {
   const [isActive, setisActive] = useState<boolean>(false);
@@ -26,10 +27,10 @@ function Navbar() {
 
   const LogoutAccount = async () => {
     const response = await Logout(session_id);
-    if(response.success){
-      window.location.href="/login";
+    if (response.success) {
+      window.location.href = "/login";
     }
-  }
+  };
 
   return (
     <header className="bg-gradient-to-b from-[rgba(0,0,0,.8)] to-[rgba(0,0,0,0)] body-container w-[100%] fluid relative">
@@ -58,22 +59,22 @@ function Navbar() {
             isActive ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <Link
-            onClick={() => setisActive(false)}
-            className="hover:text-zinc-400 transition"
-            href="/movie"
-          >
-            MOVIES
-          </Link>
-          <Link
-            onClick={() => setisActive(false)}
-            className="hover:text-zinc-400 transition"
-            href="/tv-series"
-          >
-            TV SERIES
-          </Link>
           {session_id ? (
             <>
+              <Link
+                onClick={() => setisActive(false)}
+                className="hover:text-zinc-400 transition"
+                href="/movie"
+              >
+                MOVIES
+              </Link>
+              <Link
+                onClick={() => setisActive(false)}
+                className="hover:text-zinc-400 transition"
+                href="/tv-series"
+              >
+                TV SERIES
+              </Link>
               <Link
                 onClick={() => setisActive(false)}
                 className="hover:text-zinc-400 transition"
@@ -82,7 +83,10 @@ function Navbar() {
                 WATCHLIST
               </Link>
               <Link
-                onClick={() => {setisActive(false); LogoutAccount()}}
+                onClick={() => {
+                  setisActive(false);
+                  LogoutAccount();
+                }}
                 className="hover:text-zinc-400 transition flex items-center"
                 href="/"
               >

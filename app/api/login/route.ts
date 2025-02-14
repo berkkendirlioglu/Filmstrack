@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const headers = new Headers();
     headers.append(
         "Set-Cookie",
-        `accessToken=${accessToken}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=86400`
+        `accessToken=${accessToken}; Path=/; SameSite=Strict; Max-Age=86400`
     );
 
     return new NextResponse(JSON.stringify({ message: "Login successful" }), { headers });
