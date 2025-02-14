@@ -62,7 +62,7 @@ function LoginPage() {
               <button className='text-[#000] text-[1.7rem] absolute right-[2%]' onClick={() => setModalHandle(false)}><IoMdClose/></button>
             </div>
             <div className='py-10 h-[100%] flex flex-col justify-around items-center'>
-              <p className='text-[#000] text-center px-20'>"APP" sizin adınıza veri okumak ve yazmak için izninizi istiyor. Listelerinizi korumak veya filmleri TMDB dışında derecelendirmek gibi şeyler yapmak istiyorsanız bu gereklidir. <br /> Lütfen TMDB API üzerinden token yetkilendirildiğinde "Evet" butonuna tıklayınız.</p>
+              <p className='text-[#000] text-center px-20'>"APP" sizin adınıza veri okumak ve yazmak için izninizi istiyor. Listelerinizi korumak veya filmleri TMDB dışında derecelendirmek gibi şeyler yapmak istiyorsanız bu gereklidir. <br /> Lütfen TMDB API üzerinden token yetkilendirildiğinde "Kabul Et" butonuna tıklayınız.</p>
               <div className='flex w-[100%] justify-center items-center gap-[1rem]'>
                 <button onClick={createSessionId} className='text-[#fff] bg-[#000] py-2 px-4 rounded-[25px]'>Kabul Et</button>
                 <button onClick={() => setModalHandle(false)} className='text-[#000] border border-solid border-[#000] rounded-[25px] py-2 px-4'>Reddet</button>
